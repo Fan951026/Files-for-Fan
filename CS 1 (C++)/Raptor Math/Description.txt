@@ -1,0 +1,25 @@
+https://xkcd.com/135/
+
+
+
+
+For this assignment, you'll be writing a program which will solve #1 of https://xkcd.com/135/. xkcd quiz. Here's how it'll work:
+
+To simplify things a little, we'll make the following changes:
+
+Assume that both the user and the raptor run at a constant rate (25 m/s for the raptor, 6 m/s for the user).
+Assume that both the user and the raptor reach their top speeds instantly.
+Instead of calculating how far the user can get, instead calculate how long the user will live in seconds.
+To make things a little more interesting, we'll add in the following requirements for your program:
+
+Instead of the starting distance always being 40 meters, allow the user to enter in any distance. You may assume the user will enter a value greater than 0.
+The time and distance may not be a whole number value, so keep this in mind when deciding which data types to use in your calculations.
+You should be able to figure out the equation on your own, so please allow other students the same opportunity. That being said, if anyone gets truly stuck, feel free to ask the tutors for some pointers.
+
+
+Here is an example of what the output from your program will look like:
+
+>How far away is the raptor in meters?
+
+>100
+You will remain alive for 5.26316 seconds!

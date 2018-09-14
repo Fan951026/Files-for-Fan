@@ -1,0 +1,22 @@
+Write a class called PiggyBank that contains the following member variables:
+
+broken
+a bool indicating whether or not the piggy bank is broken
+savings
+a double that holds the value stored in your piggy bank
+In addition, the class should contain the following member functions:
+
+A default constructor
+This constructor should set the value for the broken bool and start the bank with no money.
+A regular constructor
+This constructor should accept a value for an initial deposit into your bank and set the initial value of the broken bool
+A destructor
+The destructor should check if the piggy bank is broken and output a message if it was broken.
+countSavings
+This is an accessor function that should give you the amount stored in the savings variable
+depositMoney
+This function should accept a double and add that value to what is stored in the savings function
+You can't put money into a broken piggy bank.
+ Negative money deposits are not allowed
+smash
+smash should change the broken bool so it indicates the piggy bank is broken and return the money you have in your piggy bank.

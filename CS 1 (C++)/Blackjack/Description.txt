@@ -1,0 +1,218 @@
+The objectives of this assignment are:
+
+1.Create a header file for a class that represents a Blackjack game
+2.Create an implementation file for the Blackjack class
+3.Develop and implement code that uses the Blackjack class to play the game
+4.Use a vector
+5.Use arrays
+6.Use a C++ enumeration
+You'll start by creating the header file for a Blackjack game using the given specifications as a starting point.
+ This class should contain all of the functionality necessary to play Blackjack, including the moves of the Dealer or "House." 
+Play of Blackjack is as follows:
+
+The player...[is] dealt an initial two-card hand and add[s] together the value of [his/her] cards. 
+Face cards (kings, queens, and jacks) are counted as ten points. A player and the dealer can count their own ace as 1 point or 11 points. 
+All other cards are counted as the numeric value shown on the card.
+ After receiving their initial two cards, players have the option of getting a "hit", or taking an additional card. In a given round, 
+the player or the dealer wins by having a score of 21 or by having the highest score that is less than 21.
+ Scoring higher than 21 (called "busting" or "going bust") results in a loss.
+ A player may win by having any final score equal to or less than 21 if the dealer busts. In the case of a tie, the dealer wins.
+ The dealer's hand receives its first card face up and immediately receives its second card face down (the hole card), 
+which the dealer peeks at but does not reveal unless it makes the dealer's hand a blackjack. 
+(Wikipedia (Links to an external site.)Links to an external site.)
+
+You should use the sample output given on this page to test your program.
+
+The Blackjack header file should contain the following enumeration: enum Status { PLAYER_TURN, DEALER_TURN, PLAYER_WIN, DEALER_WIN };
+The Blackjack header file should also contain the following enumeration: enum Move { HIT, PASS };
+The Blackjack header file should contain the following private data members:
+vector<int> playerHand: holds the player's current hand
+vector<int> dealerHand: holds the dealer's current hand
+bool showHole: determines whether or not the dealer's "hole" card should be displayed
+int deck[13]: holds the number of any given card currently left in the deck (initially 4 of each)
+Status status: holds the current status of the game
+The Blackjack header file should contain the following method prototypes (public unless otherwise noted):
+(private) void resolveWinner();
+Blackjack();
+void reset();
+Status getStatus();
+int getPlayerScore();
+void displayPlayerHand();
+int getDealerScore();
+void displayDealerHand();
+void makeMove(Move move);
+(private) void hit();
+(private) void pass();
+void displayInstructions();
+The Blackjack implementation file should contain the following methods:
+void resolveWinner();
+Looks to see which player won and updates the status accordingly.
+Blackjack();
+This constructor just calls reset().
+void reset();
+Resets the deck and empties both players' hands. Deals two cards to each player, starting with the player.
+Status getStatus();
+Returns the current status of the game.
+int getPlayerScore();
+Returns the current value of the player's hand.
+void displayPlayerHand();
+Displays the user's current hand.
+int getDealerScore();
+Returns the current value of the dealer's hand.
+void displayDealerHand();
+Displays the dealer's current hand.
+void makeMove(Move move);
+This method either calls hit() or pass(), depending on what was passed in.
+int hit();
+Based on the current status, deals either the player or the dealer another card by adding another card into their respective hand. This card should be chosen randomly from the remaining cards in the deck. This method must check that the drawn card still exists in the deck. If either player busts, this method should end the game and call resolveWinner().
+void pass();
+If it is currently the player's turn, this method should set the status to DEALER_TURN. If it is currently the dealer's turn, this method should end the game and call resolveWinner().
+void displayInstructions();
+Display game instructions to the console. It is suggested that you copy the instructions from the sample output.
+The main program that actually plays the Blackjack program is not too difficult if the Blackjack class is implemented properly. A general pseudocode of the algorithm would go something like this:
+create Blackjack object
+
+initialize variables
+
+while the user wants to play another game
+
+reset the Blackjack game
+
+display game instructions
+
+give both players two cards
+
+output the current cards held by each player, with the "hole" card hidden except in the case of a blackjack
+
+while the user hasn't passed or busted
+
+get a valid move from the user
+
+make the move
+
+display the user's hand and current score
+
+display the dealer's "hole" card
+
+while the dealer hasn't passed, busted, or beaten user (dealer stops as soon as they have guaranteed a win)
+
+decide dealer's move
+
+dealer makes move
+
+display the dealer's hand and current score
+
+display the result of the game with accompanying hands and scores
+
+ask user if they wish to play again
+
+ 
+
+Sample Output
+
+Welcome to Blackjack! Click the flashing ad to play for real money. Trust me, it's not a scam at all...
+
+You will play first, followed by the dealer. You may choose to hit (h) or pass (p).
+
+Dealing cards...
+
+Your hand: A 4
+
+You currently have a score of 15.
+
+Dealer's hand: A H
+
+Enter move: win
+
+Invalid input. Please choose h to hit or p to pass.
+
+Enter move: hit
+
+Invalid input: Please choose h to hit or p to pass.
+
+Enter move: h
+
+Your hand: A 4 9
+
+You currently have a score of 14.
+
+Enter move: h
+
+Your hand: A 4 9 K
+
+You busted!
+
+Dealer's hand: A 7
+
+Dealer chooses to pass.
+
+Dealer wins, with 18 points to your 24.
+
+
+
+Would you like to play again (y/n)? y
+
+
+Welcome to Blackjack! Click the flashing ad to play for real money! Trust me, it's not a scam at all...
+
+You will play first, followed by the dealer. You may choose to hit (h) or pass (p).
+
+Dealing cards...
+
+Your hand: A K
+
+Current score: 21, Blackjack!
+
+Dealer's hand: A H
+
+Enter move: p
+
+Dealer's hand: A 5
+
+Dealer hits
+
+Dealer's hand: A 5 K
+
+Current score: 16
+
+Dealer hits
+
+Dealer's hand: A 5 K 6
+
+Current score: 22
+
+Dealer busted!
+
+You win, with 21 to Dealer's 22!
+
+ 
+
+Would you like to play again (y/n)? y
+
+ 
+
+Welcome to Blackjack! Click the flashing ad to play for real money! Trust me, it's not a scam at all...
+
+You will play first, followed by the dealer. You may choose to hit (h) or pass (p).
+
+Dealing cards...
+
+Your hand: A K
+
+Current score: 21, Blackjack!
+
+Dealer's hand: A Q
+
+Current score: 21, Blackjack!
+
+Dealer wins, with 21 to your 21.
+
+
+Would you like to play again (y/n)? nah
+
+Invalid choice.
+
+Would you like to play again (y/n)? n
+
+Thanks for playing!
+

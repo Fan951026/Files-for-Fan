@@ -1,0 +1,12 @@
+Implement a 10-bit counter on your DE-10 Lite development board.  The counter should meet the following criteria:
+
+1.The 10 bits shall be tied to the 10 LEDs on the board
+2.The timer should "tick" at a 1 Hz rate
+3.Implement a reset button that sets the count back to zero
+4.The project shall be completed entirely in VHDL
+
+I suggest you use the System Builder utility provided on the DE-10 Lite CD to set up your Quartus project.
+
+Pass off your functioning circuit to Dr. Phillips.
+
+Submit your lab report that meets the criteria specified on the main Canvas page.

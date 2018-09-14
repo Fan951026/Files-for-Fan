@@ -1,0 +1,11 @@
+The position of 5 is -1
+The position of 18 is 0
+The position of 171 is 26
+The position of 59 is 10
+The position of 79 is -1
+The position of 195 is 28
+The position of 99 is -1
+The position of 131 is 22
+The position of 93 is 16
+The position of 652 is -1
+The position of 41 is 6

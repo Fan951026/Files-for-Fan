@@ -1,0 +1,166 @@
+#/* $begin ncopy-ys */
+##################################################################
+# ncopy.ys - Copy a src block of len words to dst.
+# Return the number of positive words (>0) contained in src.
+#
+# Taylor Hansen & Xuecong Fan
+# A01476037 & A01972388
+#
+# I first modified the code by removing the irmovq commands and the addq and subq commands and replaced them with the iaddq command. This gave the same functionality but replaced two instructions for one, thus increasing the efficiency.
+#
+# Next I unrolled the loop to complete nine elements per loop iteration. This increases the efficency by remoing the total number of times the program has to loop, which decreases the number of compares and jumps needed overall.
+#
+# Then I deleted the addq commands for the src++ and dst++ operations, and replaced them with memory offsets in the front of the mrmovq and rmmovq instructions. I can do this becaus I know the first element will have an offest of 0 and the second will have an offset of 8, then the third will have 16, and the fourth will have 32, and so forth. Then after completing nine elements I update the source and destation pointers by 72. This method allows me to update the source and destination pointers once every nine elements which greatly increases the efficiency.
+#
+#  If there are ever nine or less elements I have the code jump to compute the remainding elements. I adjusted the code to calculate the number of remaining elements and have it compute those elements and then jump to Done. This was done to avoid updating the source and memory pointers, since memory offsets can be used in their place, and to avoid updating the the length value. This method also allows me to avoid looping for the remaing elements which saves the code from running through addtional comparitive jumps.
+#
+##################################################################
+# Do not modify this portion
+# Function prologue.
+# %rdi = src, %rsi = dst, %rdx = len
+#
+ncopy:
+
+##################################################################
+# You can modify this portion
+	# Loop header	
+	xorq %rax,%rax          # count = 0
+	iaddq $-9,%rdx		# 'len = len - 9
+	jl  Rem 		# go to Rem if len < 9
+
+Loop:	mrmovq (%rdi), %r10	# read val from src...
+	rmmovq %r10, (%rsi)     # ...and store it to dst
+	andq %r10, %r10		# val <= 0?
+	jle NposA		# if so, goto NposA:
+	iaddq $1, %rax		# count++
+
+NposA:	mrmovq 8(%rdi), %r10    # read val from src...
+        rmmovq %r10, 8(%rsi)    # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle NposB               # if so, goto NposB:
+        iaddq $1, %rax          # count++
+
+NposB:	mrmovq 16(%rdi), %r10   # read val from src...
+        rmmovq %r10, 16(%rsi)   # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle NposC               # if so, goto NposC:
+        iaddq $1, %rax          # count++
+
+NposC:  mrmovq 24(%rdi), %r10   # read val from src...
+        rmmovq %r10,24(%rsi)    # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle NposD               # if so, goto NposD:
+        iaddq $1, %rax          # count++
+
+NposD:  mrmovq 32(%rdi), %r10   # read val from src...
+        rmmovq %r10,32(%rsi)    # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle NposE               # if so, goto NposE:
+        iaddq $1, %rax          # count++
+
+NposE:  mrmovq 40(%rdi), %r10   # read val from src...
+        rmmovq %r10,40(%rsi)    # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle NposF               # if so, goto NposF:
+        iaddq $1, %rax          # count++
+
+NposF:  mrmovq 48(%rdi), %r10   # read val from src...
+        rmmovq %r10,48(%rsi)    # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle NposG               # if so, goto NposG:
+        iaddq $1, %rax          # count++
+
+NposG:  mrmovq 56(%rdi), %r10   # read val from src...
+        rmmovq %r10,56(%rsi)    # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle NposH               # if so, goto NposH:
+        iaddq $1, %rax          # count++
+
+NposH:  mrmovq 64(%rdi), %r10   # read val from src...
+        rmmovq %r10,64(%rsi)    # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle NposI               # if so, goto NposI:
+        iaddq $1, %rax          # count++
+
+NposI: 	iaddq $72, %rdi		# src += 9
+	iaddq $72, %rsi		# dst += 9
+	iaddq $-9, %rdx 	#'len = 'len - 9,'len >= 0?
+	jge Loop		# if so, goto Loop:
+
+# determine number of remaining elements and complete them.
+
+Rem:	iaddq 9, %rdx		# check remaining elements
+	je Done			# if no remaining elements jump to Done
+
+	mrmovq (%rdi), %r10     # read val from src...
+        rmmovq %r10, (%rsi)     # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle E1                  # if so, goto E1:
+        iaddq $1, %rax          # count++
+E1:	iaddq $-1, %rdx		# check remaining elements
+	je Done			# if no remaining elements jump to Done
+
+        mrmovq 8(%rdi), %r10    # read val from src...
+        rmmovq %r10, 8(%rsi)    # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle E2                  # if so, goto E2:
+        iaddq $1, %rax          # count++
+E2:	iaddq $-1, %rdx		# check remaining elements
+	je Done			# if no remaining elements jump to Done
+
+	mrmovq 16(%rdi), %r10   # read val from src...
+        rmmovq %r10, 16(%rsi)   # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle E3                  # if so, goto E3:
+        iaddq $1, %rax          # count++
+E3:	iaddq $-1, %rdx		# check remaining elements
+	je Done			# if no remaining elements jump to Done
+
+	mrmovq 24(%rdi), %r10   # read val from src...
+        rmmovq %r10, 24(%rsi)   # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle E4                  # if so, goto E4:
+        iaddq $1, %rax          # count++
+E4:     iaddq $-1, %rdx		# check remaining elements
+        je Done			# if no remaining elements jump to Done
+
+        mrmovq 32(%rdi), %r10   # read val from src...
+        rmmovq %r10, 32(%rsi)   # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle E5                  # if so, goto E5:
+        iaddq $1, %rax          # count++
+E5:     iaddq $-1, %rdx		# check remaining elements
+        je Done			# if no remaining elements jump to Done
+
+        mrmovq 40(%rdi), %r10   # read val from src...
+        rmmovq %r10, 40(%rsi)   # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle E6                  # if so, goto E6:
+        iaddq $1, %rax          # count++
+E6:     iaddq $-1, %rdx		# check remaining elements
+        je Done			# if no remaining elements jump to Done
+
+        mrmovq 48(%rdi), %r10   # read val from src...
+        rmmovq %r10, 48(%rsi)   # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle E7                  # if so, goto E7:
+        iaddq $1, %rax          # count++
+E7:     iaddq $-1, %rdx		# check remaining elements
+        je Done			# if no remaining elements jump to Done
+
+	mrmovq 56(%rdi), %r10   # read val from src...
+        rmmovq %r10, 56(%rsi)   # ...and store it to dst
+        andq %r10, %r10         # val <= 0?
+        jle E8                  # if so, goto E8:
+        iaddq $1, %rax          # count++
+E8:     jmp Done                # goto Done:
+
+##################################################################
+# Do not modify the following section of code
+# Function epilogue.
+Done:
+	ret
+##################################################################
+# Keep the following label at the end of your function
+End:
+#/* $end ncopy-ys */

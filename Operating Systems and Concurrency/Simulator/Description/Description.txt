@@ -1,0 +1,49 @@
+Part - 1:
+Write a simulator for exploring different CPU and Memory scheduling algorithms. 
+
+At a minimum your simulator must be able to vary the following parameters:
+
+-Task mix - The percentage of CPU vs I/O bound processes
+-Task frequency - The rate at which new processes are added to the system
+-Number of CPUs
+-Number of unique I/O Devices
+-Cost of a context switch
+At a minimum your simulator must be able to measure the following statistics:
+
+-Response Time - Time from process creation to first I/O completion
+-Latency - Time from process creation to final CPU completion
+-Throughput - Number of completed processes per unit time
+-Efficiency - Percentage of time spent with CPUs occupied with useful work (context switching does not count)
+
+Use your simulator to explore FIFO process scheduling. Include a report of your findings.
+Include a readme file that explains how to run your simulator and set parameters for an experiment. 
+Future assignments will extend the number of scheduling algorithms and the number of parameters so be flexible in your implementation.
+
+//============================================================================
+Part - 2: 
+
+Add Round Robin, Shortest Job First, and Approximate Shortest Job First scheduling to your simulator. 
+ Design an experiment and report on your findings as before.
+
+//============================================================================
+Part - 3:
+
+Add memory to your scheduler.  Also add the following memory scheduling algorithms:
+
+-FIFO
+-Most Recently Used
+-Least Recently Used
+-Second Chance
+Add the following parameters
+
+-Size of cache (memory)
+-Cache miss penalty
+-Page distributions
+
+Page distribution can be as simple as a number of pages, then draw uniformly.
+
+
+As before submit a report of your findings.
+
+
+

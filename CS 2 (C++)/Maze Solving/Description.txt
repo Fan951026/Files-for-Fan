@@ -1,0 +1,4 @@
+Write a program that reads a maze from a file then outputs the maze and its solution to the screen.
+
+The maze format will contain the number of rows followed by the number of columns.  
+Then there will be a x for walls and a . for open spaces.  The start of the maze will be indicated by an s and the end by an e.

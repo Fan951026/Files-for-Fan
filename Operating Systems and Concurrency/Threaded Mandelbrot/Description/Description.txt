@@ -1,0 +1,5 @@
+Extend your first Mandelbrot program to use multiple threads to speed up computation.  Use at least two different strategies for dividing the work.
+
+Include a short (2-3 paragraph) written report about your findings.  
+The report must include a description of your strategies for dividing work and your hypothesis for which will be superior and why. 
+ The report must also include your results and speed up calculations for both of your strategies.

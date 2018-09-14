@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang = "en-US">
+<head>
+    <meta charset = "UTF-8">
+    <link rel="stylesheet" href="./index.css">
+    <title>Canvas Rendering - Shapes</title>
+    <script src = "main.js"></script>
+</head>
+<body onload = "initialize()">
+    
+    <div class = "container"> 
+        <h1>Maze Game</h1>
+        <h1 id = "time"> </h1>
+        <h1 id = "score"> </h1>
+
+
+
+        <div id = "left"><canvas id = "canvas-main" width = "1000" height = "1000" style = "width: 100%; height: 100%"></canvas></div>
+        <div id = "right" class = "container1"> 
+            <br/>
+       
+          <button onclick = "start()" type = "button"> New Game</button> <br/>
+          <button onclick = "buttonPressed(5)" type = "button"> 5 X 5</button> <br/>
+          <button onclick = "buttonPressed(10)" type = "button"> 10 X 10</button> <br/>
+          <button onclick = "buttonPressed(15)" type = "button"> 15 X 15</button> <br/>
+          <button onclick = "buttonPressed(20)" type = "button"> 20 X 20</button> <br/>
+          
+        </div>
+        <h3> Created for CS 5410</h3>
+        <h1> Hint - H; Breadcrumbs - B; Path - P; Score - Y </h1>
+      </div>
+
+
+
+
+
+
+</body>
+</html>

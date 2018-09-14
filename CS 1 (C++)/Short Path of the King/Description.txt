@@ -1,0 +1,37 @@
+For this assignment, we'll be solving the problem presented at www.codeforces.com/problemset/problem/3/A (Links to an external site.)Links to an external site..
+Mirror: https://docs.google.com/document/d/1v-0T0qeKS1ag7wA8g9d90_RVwnk3OLxwKEvzSJ9PlJc/edit?usp=sharing (Links to an external site.)Links to an external site.
+
+Due to the complexity of this problem, you'll be provided with pseudocode outlining the algorithm necessary to complete the assignment, given below:
+
+//start program
+
+read in coordinates
+
+x = horizontal distance from start to finish
+
+y = vertical distance from start to finish
+
+numMoves = 0
+
+listOfMoves=“”
+
+while not at finish {
+
+  increment numMoves
+
+  subtract from or add to x, store direction in listOfMoves
+
+  subtract from or add to  y, store direction in listOfMoves
+
+}
+
+display numMoves
+
+display listOfMoves
+
+//end program
+
+ 
+
+If you would like to test your program, you are free to make an account on CodeForces and submit your solution. 
+If it passes their tests, you can be sure it will pass ours.

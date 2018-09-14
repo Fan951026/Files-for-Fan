@@ -1,0 +1,464 @@
+The objectives of this assignment are:
+
+create a header file for a class that represents a TicTacToe board
+create an implementation file for the TicTacToe class
+develop and implement code that uses the TicTacToe class to play the game
+use a 2-dimensional array (Section 8.9 in the book)
+use a C++ enumeration (Section 4.13 in the book)
+You start by creating a header file (most of which is given to you) for a TicTacToe class. 
+The TicTacToe class represents a TicTacToe board. 
+You also have to create the implementation file for the TicTacToe class and develop the code to use the class to actually play a game of TicTacToe. 
+You should use the sample output given on this page to test your program.
+
+The TicTacToe header file should contain the following enumeration: enum Status { ONGOING, DRAW, PLAYER_1_WIN, PLAYER_2_WIN };
+The TicTacToe header file should contain the following private data members:
+char board[3][3]: each element contains a blank or one of the player symbols
+int numMoves: the number of moves (= number of player symbols on board)
+char player[2]: contains the player symbols (X and O by default)
+Status status: contains the status of the game
+The TicTacToe header file should contain the following function prototypes (public unless otherwise noted):
+(private) bool checkForWin(char c);
+TicTacToe();
+void reset();
+Status getStatus();
+char getPlayer1();
+char getPlayer2();
+char nextToMove();
+void displayInstructions();
+void displayBoard();
+bool move(int cell);
+The TicTacToe implementation file should contain the following functions:
+bool checkForWin(char c);
+Checks to see if player represented by symbol c has won the game. Returns true if player won or false otherwise.
+TicTacToe();
+This constructor just calls reset().
+void reset();
+Set the player symbols to X and O. Reset numMoves. Set the status to ONGOING. Set all board elements to spaces.
+Status getStatus();
+Return the game status.
+char getPlayer1();
+Return the player 1 symbol.
+char getPlayer2();
+Return the player 2 symbol.
+char nextToMove();
+Return the symbol for the player whose turn it is.
+void displayInstructions();
+Display game instructions to the console. It is suggested that you copy the instructions from the sample output.
+void displayBoard();
+Display the current TicTacToe board to the console. See the sample output for an example of what this might look like.
+bool move(int cell);
+This is the workhorse of the class. It has to do some error checking, then record the move, and set the game status. 
+It returns true if the move was accepted and false otherwise.
+Error checking consists of making sure the cell number is between 1 and 9, 
+making sure the game status is ONGOING and making sure the specified cell is currently blank.
+If a move is valid, then the specified board element is set to the symbol for the player whose turn it is and the number of moves is incremented. 
+The last step is to update the game status. 
+If the player who made the move has won, then set the status to reflect who has won. If the player has not won, then check for a draw. 
+You will know a draw because the player who moved didn't win and the number of moves is 9.
+The main program that actually plays the TicTacToe game is not too difficult if the TicTacToe class has been implemented properly.
+ A general pseudocode outline of the algorithm would go something like this:
+create TicTacToe object
+
+initialize variables
+
+while the user wants to play another game
+
+    reset the TicTacToe board
+
+    display game instructions
+
+    display the TicTacToe board
+
+    while the game is still active
+
+        get a valid move from the user
+
+        make the move
+
+        display the TicTacToe board
+
+    display the game status (who won or if it was a draw)
+
+What to turn in:
+
+Your class definition should be in a file called TicTacToe.h. The implementation of the functions should be in a file called TicTacToe.cpp. You will handle the gameplay in your Main.cpp. Zip all three files together and submit.
+
+ 
+
+Sample Output:
+
+This is the game of Tic Tac Toe.
+
+X moves first. Each player chooses their
+
+move by selecting the cell they want to place
+
+their mark in. The cells are numbered as follows:
+
+ 
+
+  1  2  3
+
+  4  5  6
+
+  7  8  9
+
+ 
+
+    |    |
+
+-----------
+
+    |    |
+
+-----------
+
+    |    |
+
+ 
+
+Enter move for player X: go
+
+Invalid Input. Enter a number between 1 and 9.
+
+Enter move for player X: 11
+
+Invalid Input. Enter a number between 1 and 9.
+
+Enter move for player X: 5
+
+ 
+
+    |    |
+
+-----------
+
+    | X |
+
+-----------
+
+    |    |
+
+ 
+
+Enter move for player O: 1
+
+ 
+
+ O |   |
+
+-----------
+
+    | X |
+
+-----------
+
+    |    |
+
+ 
+
+Enter move for player X: 2
+
+ 
+
+ O | X |
+
+-----------
+
+    | X |
+
+-----------
+
+    |    |
+
+ 
+
+Enter move for player O: 1
+
+Invalid Move. This cell has already been chosen.
+
+Enter move for player O: 5
+
+Invalid Move. This cell has already been chosen.
+
+Enter move for player O: 8
+
+ 
+
+ O | X |
+
+-----------
+
+    | X |
+
+-----------
+
+    | O |
+
+ 
+
+Enter move for player X: 3
+
+ 
+
+ O | X | X
+
+-----------
+
+    | X |
+
+-----------
+
+    | O |
+
+ 
+
+Enter move for player O: 7
+
+ 
+
+ O | X | X
+
+-----------
+
+    | X |
+
+-----------
+
+ O | O |
+
+ 
+
+Enter move for player X: 4
+
+ 
+
+ O | X | X
+
+-----------
+
+ X | X |
+
+-----------
+
+ O | O |
+
+ 
+
+Enter move for player O: 9
+
+ 
+
+ O | X | X
+
+-----------
+
+ X | X |
+
+-----------
+
+ O | O | O
+
+ 
+
+Player O won!
+
+ 
+
+ 
+
+Would you like to play again (y/n)? y
+
+ 
+
+ 
+
+This is the game of Tic Tac Toe.
+
+X moves first. Each player chooses their
+
+move by selecting the cell they want to place
+
+their mark in. The cells are numbered as follows:
+
+ 
+
+  1  2  3
+
+  4  5  6
+
+  7  8  9
+
+ 
+
+ 
+
+    |    |
+
+-----------
+
+    |    |
+
+-----------
+
+    |    |
+
+ 
+
+Enter move for player X: 5
+
+ 
+
+    |    |
+
+-----------
+
+    | X |
+
+-----------
+
+    |    |
+
+ 
+
+Enter move for player O: 8
+
+ 
+
+    |    |
+
+-----------
+
+    | X |
+
+-----------
+
+    | O |
+
+ 
+
+Enter move for player X: 4
+
+ 
+
+    |    |
+
+-----------
+
+ X | X |
+
+-----------
+
+   | O |
+
+ 
+
+Enter move for player O: 6
+
+ 
+
+    |    |
+
+-----------
+
+ X | X | O
+
+-----------
+
+   | O |
+
+ 
+
+Enter move for player X: 3
+
+ 
+
+    |    | X
+
+-----------
+
+ X | X | O
+
+-----------
+
+   | O |
+
+ 
+
+Enter move for player O: 7
+
+ 
+
+    |    | X
+
+-----------
+
+ X | X | O
+
+-----------
+
+ O | O |
+
+ 
+
+Enter move for player X: 9
+
+ 
+
+    |    | X
+
+-----------
+
+ X | X | O
+
+-----------
+
+ O | O | X
+
+ 
+
+Enter move for player O: 1
+
+ 
+
+ O |   | X
+
+-----------
+
+ X | X | O
+
+-----------
+
+ O | O | X
+
+ 
+
+Enter move for player X: 2
+
+ 
+
+ O | X | X
+
+-----------
+
+ X | X | O
+
+-----------
+
+ O | O | X
+
+ 
+
+The Game was a draw!
+
+ 
+
+Would you like to play again (y/n)? nope
+
+Invalid choice.
+
+Would you like to play again (y/n)? 1
+
+Invalid choice.
+
+Would you like to play again (y/n)? n

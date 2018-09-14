@@ -1,0 +1,102 @@
+Blackjack Tournament
+
+Your assignment is to implement a sensible, strategic gaming algorithm that can compete in live game play against your fellow students and (ideally) slaughter them.
+
+The Game
+
+The objective of Blackjack is to attain a hand value that is greater than that of the dealer, yet does not exceed 21. We will be playing using one standard deck, with cards of rank 2 through 10 scored according to their face value, while face cards—jack, queen, and king—are valued at 10 points. Aces can be worth either 1 or 11 points. The game is further governed by the following rules:
+
+Players win if their hand has a greater total point value than the dealers, without going over 21.
+The best possible hand is called a blackjack and it consists of an ace and any 10-point card. A winning blackjack pays 3:2.
+If both the player and the dealer have a tie—including with a blackjack—the bet is a tie or “push” and points are neither lost, nor paid.
+All other winning hands pay even points, 1:1.
+If either the player or the dealer exceed 21 or “bust” the hand automatically loses.
+If both the dealer and player bust, the player loses.
+A round of blackjack begins with the player placing a bet. In our game, bets can range between 10 and 100. Note that our “house” is very generous and allows you to borrow points, so that you can bet points that you don’t have. This means that it is possible (and very likely) that you will have negative scores. Every player will then be dealt two cards (face up) while the dealer receives two cards, one of which is exposed and the other (known as the “hole” card) face down. In many versions of the game, the dealer will check for blackjack at this point, in which case all player hands lose, except another blackjack. However, our game uses the “no hole card” rule. Under this rule, the dealer does not check their hidden card for a blackjack until after the players have completed their turns.
+
+Play starts with the player seated immediately to the left of the dealer. The following options are then available:
+
+Stand. If the player decides their hand is sufficiently strong, they may opt to take no additional action.
+
+Hit. Players may draw additional cards until they either bust or decide to stand.
+
+Double down. If a player’s hand warrants, they may opt to double their current bet and receive one additional card. This option is only offered on the first two cards.
+
+Once all players have acted, the dealer will then complete his hand. Unlike players, the dealer has no freedom to determine the best course of play and must abide by the house rules, which govern all actions. In our game the dealer must hit until his cards reach a total value of 17 or more. If the dealer busts all players active in the hand win automatically.
+
+Your Project
+
+I have written a Blackjack simulation game. It simulates shuffling a deck, taking bets, dealing hands to players, enforcing all of the rules above, declaring winners, and calculating scores. The only thing it does not do is choose how much to bet, or whether to hit (or stand) or double down for each player.
+
+Every student in the class will be writing their own code to do those three things: choose an initial bet amount, choose whether to double down, and choose whether to hit (or stand). My program will run the game, and then at the appropriate points, call your method(s) to do those three things. In this way, your program will be able to "play" Blackjack against your classmates in a tournament. The student with the best algorithm for gameplay should win.
+
+You may object to that last statement, claiming that luck is a major factor. This would be true except for one thing: I am not going to pit your Blackjack program against your fellow students' programs in just one game, but in 50,000 straight games. The winner will be the player with the highest cumulative score. Running this many games will admittedly take a few seconds. But over that many games, any "lucky deals" will even out over time, leaving a superior algorithm with the lead.
+
+Getting Started
+
+Do the following to get your code set up:
+
+Unzip the code available HERE.
+Don’t be intimidated by the number of files (10 .cpp files and 10 .h files). 
+Configure your workspace (IDE, folder) the same way you configured your workspace for the last few assignments and copy the files into this workspace.
+Once you have imported/created all the files in your workspace, compile your code. The code should compile.
+ If it doesn’t compile, make sure you have all the files, and that each file has the correct content.
+ For those compiling from the command-line, remember that you have to include the name of every .cpp file in your compile statement. 
+Note that the “Constants.h” file does not have a corresponding “Constants.cpp” file, this is intentional.
+After everything compiles you can start writing your own BlackjackPlayer Class.
+ Rename the files "StudentName_BlackjackPlayer.cpp" and "StudentName_BlackjackPlayer.h"  so that  "StudentName" is your name.
+ For example, I would name these files "AmandaHughes_BlackjackPlayer.cpp"  and "AmandaHughes_BlackjackPlayer.h".
+ Please do not name the class anything else. Please do not get clever, or creative, or capitalize differently, or use a hyphen instead of an underscore. 
+You may shorten your name if it is really long. 
+After the rename is complete, change the name of the class that is implemented in these files to match the file name.
+ So for instance, in my case the “StudentName_BlackjackPlayer” class becomes the “AmandaHughes_BlackjackPlayer” class.
+ Basically, search for “StudentName_BlackjackPlayer” in these two files and replace all instances with your new class name.
+Now open the “Main.cpp” file. Inside this file replace any instance of “StudentName_BlackjackPlayer” with the name of your new class (one instance will be an include statement, the other when you are creating a player).
+After making these changes, you should be able to successfully compile your code.
+You are now ready to begin your mission of implementing the hit(), initialBet(), and doubleDown() functions in your version of the BlackjackPlayer class.
+
+Blackjack player: functions
+
+Your “StudentName_BlackjackPlayer.cpp”  (in my case “AmandaHughes_BlackjackPlayer.cpp”) file has detailed comments describing the initialBet(), 
+hit(), and doubleDown() functions you are to write code for. Reading these detailed comments is an excellent and praiseworthy idea.
+
+The initialBet() function is called by the game code to determine what your initial bet will be. The function declaration looks like this:
+
+int initialBet();
+
+The method must return an integer between the values of 10 and 100, meaning that the lowest bet you can make is 10 and the highest is 100.
+ If you are thinking of cheating and entering a number that is not in that range, 
+know that the game code checks to make sure a valid value is returned and if it is not, your initialBet will default to 10.
+
+The hit() function takes two parameters. Here is its function declaration:
+
+bool hit(vector<Card> hand, Card dealerUpCard);
+
+Collectively, these arguments tell your function (1) what cards are in your hand, (2) the dealer card that is face up.
+ Using this information you can build a sophisticated strategy. 
+This function is called when it's your turn and you need to choose whether to hit or stand.
+ The function must return a bool value: true, if you want to hit and false, if you want to stand.
+
+Similarly, the doubleDown() function takes two parameters:
+
+bool doubleDown(vector<Card> hand, Card dealerUpCard);
+
+Again, these arguments tell your function (1) what cards are in your hand, (2) the dealer card that is face up. 
+This function is called when it's your turn and you need to choose whether you want to double down.
+
+If you choose to double down, you will double your initial bet and receive one more card, then your turn is over.
+ Typically you would only double down if you think you have a really good chance of beating the dealer based on your own hand and the dealer's visible card. You will only be given the double down option when you are playing on your initial two-card hand. The function must return a bool value: true, if you want to double down and false, if you do not.
+
+Important Note: The program will check to see if your initial two-card hand is a blackjack. 
+If it is, your turn will end. You will not be asked to double down, or to hit or stay. 
+This logic prevents you from doubling down on a blackjack, or accidently hitting and busting on a blackjack.
+
+Controlling the Program Output
+
+I’ve given you a way to control the output of your program. 
+In the “Constants.h” file, there is a variable named “PRINT_VERBOSE”. This variable is defaulted to true.
+ When it is true the program will output a detailed, play-by-play description of the game play.
+ This is helpful when you are working on strategy and debugging your program. 
+However, after you have a working strategy, you will want to run many games in a row to see how your strategy performs, 
+at which point you will not want a play-by-play of each game (it will make the program run really slow). 
+If you set “PRINT_VERBOSE” to false, it will only output the final score after all games have been played.

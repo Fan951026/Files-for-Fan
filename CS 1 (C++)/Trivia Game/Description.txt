@@ -1,0 +1,62 @@
+For this assignment, you will make a file-based trivia game. 
+Your program will read from a list of questions in a file called "triviaQuestions.txt" and a list of answers called "triviaAnswers.txt".
+ The game will ask the user the first question. Your program will then get the user's answer and compare it with the first answer. 
+Each question the user gets right will count for 1 point.
+ At the end of the game, your program should output the user's score (points and percentage to two decimal places). 
+The number of questions will be listed at the beginning of the triviaQuestions document, followed by the overall theme of the game. 
+There will also be a file called "highScores.txt". This file will contain the top 3 scores with the accompanying name, in order.
+
+ 
+
+An example triviaQuestions.txt file may look like this:
+
+2 BioShock
+Who created Rapture in the BioShock series?
+What were the initials on the back of Booker DeWitt's hand in BioShock Infinite?
+
+Likewise, triviaAnswers.txt will look something like this:
+
+Andrew Ryan
+AD
+
+Finally, highScores.txt will look something like this:
+10 Booker DeWitt
+9 Father Comstock
+8 Jack Wynand
+
+
+Thus, a sample run of your program may look like this:
+
+
+Welcome to the BioShock trivia game!
+
+Question 1:
+
+Who created Rapture in the BioShock series?
+
+> Andrew Ryan
+
+That is correct! You currently have 1 point.
+
+Question 2:
+
+What were the initials on the back of Booker DeWitt's hand in BioShock Infinite?
+
+> Wrong Answer
+
+I’m sorry, that is incorrect. You currently have 1 point.
+
+Final score: 50% (1/2 correct questions)
+
+You did not make it into the high scores list.
+
+Current High Scores:
+
+1. 10 Booker DeWitt
+2. 9 Father Comstock
+3. 8 Jack Wynand
+
+ 
+
+This assignment will contain an extra credit portion. You may make up your own questions and answers (in any theme). 
+If you create at least 10 of each, all of which follow a consistent theme and are of your own making, you will receive an extra 10% on this assignment.

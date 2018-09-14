@@ -1,0 +1,109 @@
+The vintage gum vending machine pictured above, allows users to insert a nickel and pull one of four tabs to dispense the pack of gum of their choice. 
+For this assignment, you are to write a menu-style program that simulates this machine. 
+Your program should print the following menu:
+
+      s - report the machine status
+      d - drop in a quarter
+      1 - pull the 1st tab
+      2 - pull the 2nd tab
+      3 - pull the 3rd tab
+      4 - pull the 4th tab
+      r - restock the machine
+      q - quit
+
+Any other input should be met with an "I do not understand" response.
+
+Here is an example session (user responses shown in blue):
+
+      s - report the machine status
+      d - drop in a quarter
+      1 - pull the 1st tab
+      2 - pull the 2nd tab
+      3 - pull the 3rd tab
+      4 - pull the 4th tab
+      r - restock the machine
+      q - quit
+
+ > s
+
+      1: 5 packs of Beemans
+      2: 7 packs of Dentyne
+      3: 1 packs of Chiclets
+      4: 6 packs of Carefree
+      There is $24.50 in the machine
+
+> d
+
+     ching
+
+> d
+
+     ching
+
+> 3
+
+    (nothing happens)
+
+> d
+
+     ching
+
+> 3
+
+     A pack of Chiclets slides into view.
+
+> d
+
+     ching
+
+> d
+
+     ching
+
+> d
+
+     ching
+
+> 3
+
+     You hear mechanical clanking, but no gum appears.
+
+> 1
+
+     (nothing happens)
+
+ > s
+
+      1: 5 packs of Beemans
+      2: 7 packs of Dentyne
+      3: 0 packs of Chiclets
+      4: 6 packs of Carefree
+      There is $26.00 in the machine
+
+> r
+
+     A grouchy-looking attendant shows up, opens the back, fiddles around a bit, closes it, and leaves.
+
+> s
+
+      1: 10 packs of Beemans
+      2: 10 packs of Dentyne
+      3: 10 packs of Chiclets
+      4: 10 packs of Carefree
+      There is $0.00 in the machine
+
+ > q
+
+     So long!
+
+You get the picture.  You are allowed to be inventive in your text and actions, as long as it makes sense within the context of the story.
+
+Below are a couple of clarifying items for the assignment:
+
+The price of a pack of gum is 75 cents (it’s no 5 cents but still a bargain).
+The vending machine only accepts quarters.
+There is no concept of a “coin return.”
+If a user tries to vend an item that is out-of-stock, the vending machine will activate the vending mechanism and take the money even if there is no item to dispense.
+To keep things simple, if a user deposits more than the amount needed to purchase the gum, all of that money is taken when the item is vended. 
+So, for example, if a user drops a $1.50 into the machine and pulls tab 1, the machine will vend a pack of Beemans gum (provided one is available) and take the $1.50.
+ The extra $0.75 is taken by the machine.

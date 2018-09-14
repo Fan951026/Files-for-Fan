@@ -1,0 +1,160 @@
+For this week’s assignment you are going to create an extended version of the PiggyBank assignment that will convert the money in the bank to different types of currency. 
+You will reuse much of the code you wrote for Assignment 11.
+
+Your piggy bank will support 5 types of currency:
+
+USD – the US dollar
+
+EUR – the Euro
+
+CAD – the Canadian dollar
+
+MXN – the Mexican peso
+
+JPY – the Japanese Yen
+
+ 
+
+Write a class called InternationalPiggyBank that uses the following enumeration and constants for currency conversion:
+
+enum CurrencyType {USD, EUR, CAD, MXN, JPY};
+
+const double USDCONVRATE=1.0;
+
+const double EURCONVRATE=0.92; // 0.92 EUR = 1 USD
+
+const double CADCONVRATE=1.25; // 1.25 CAD = 1 USD
+
+const double MXNCONVRATE=15.12; // 15.12 MXN = 1 USD
+
+const double JPYCONVRATE=119.19; // 119.19 JPY = 1 USD
+
+ 
+
+All rates are relative to the US dollar. 
+For example, 0.92 Euros is equal to 1 US dollar. Currency conversion rates constantly change, but we will use the rates provided above for this assignment.
+ These conversion rates were obtained on 3/27/2015.
+
+The InternationalPiggyBank will contain the following member variables:
+
+broken
+a bool indicating whether or not the piggy bank is broken
+savings
+a double that holds the value stored in your piggy bank
+currencyType
+a variable of type CurrencyType (see the enumerated type above) that stores the current currency type
+ 
+
+In addition, the class should contain the following member functions:
+
+A default constructor
+This constructor should set the value for the broken bool to false and start the bank with no money. 
+It should also set the currencyType to USD (the US dollar).
+A regular constructor
+This constructor should accept a value for an initial deposit into your bank and set the initial value of the broken bool to false. 
+It should also set the currencyType to USD (the US dollar).
+A destructor
+The destructor should check if the piggy bank is broken and output a message if it was broken.
+countSavings
+This is an accessor function that should give you the amount stored in the savings variable
+depositMoney
+This function should accept a double and add that value to what is stored in the savings function
+You can't put money into a broken piggy bank.
+Negative money deposits are not allowed
+smash
+smash should change the broken bool so it indicates the piggy bank is broken and return the money you have in your piggy bank.
+getCurrencyType
+This function returns a string that indicates the currencyType for the piggy bank.
+convertToUSD
+this function should convert the value of the money in the bank to US dollars and set the currencyType to USD
+convertToEUR
+this function should convert the value of the money in the bank to Euros and set the currencyType to EUR
+convertToCAD
+this function should convert the value of the money in the bank to Canadian dollars and set the currencyType to CAD
+convertToMXN
+this function should convert the value of the money in the bank to Mexican pesos and set the currencyType to MXN
+convertToJPY
+this function should convert the value of the money in the bank to Japanese yen and set the currencyType to JPY
+ 
+
+Demonstrate the program with the following main function placed in a file called Main.cpp:
+
+int main() {
+
+          InternationalPiggyBank piggyBank(12.34);
+
+         
+
+          piggyBank.depositMoney(0.26);
+
+          cout<<"The piggy bank has $"<<fixed<<setprecision(2)<<piggyBank.countSavings();
+
+          cout<<" "<<piggyBank.getCurrencyType()<<endl;
+
+         
+
+          piggyBank.convertToCAD();
+
+          cout<<"The piggy bank has $"<<piggyBank.countSavings();
+
+          cout<<" "<<piggyBank.getCurrencyType()<<endl;
+
+         
+
+          piggyBank.convertToEUR();
+
+          cout<<"The piggy bank has $"<<piggyBank.countSavings();
+
+          cout<<" "<<piggyBank.getCurrencyType()<<endl;
+
+         
+
+          piggyBank.convertToMXN();
+
+          cout<<"The piggy bank has $"<<piggyBank.countSavings();
+
+          cout<<" "<<piggyBank.getCurrencyType()<<endl;
+
+         
+
+          piggyBank.convertToJPY();
+
+          cout<<"The piggy bank has $"<<piggyBank.countSavings();
+
+          cout<<" "<<piggyBank.getCurrencyType()<<endl;
+
+         
+
+          piggyBank.convertToUSD();
+
+          cout<<"The piggy bank has $"<<piggyBank.countSavings();
+
+          cout<<" "<<piggyBank.getCurrencyType()<<endl;
+
+   
+
+          piggyBank.smash();
+
+          return 0;
+
+}
+
+ 
+
+The output from this main function should look like the following:
+
+ 
+
+The piggy bank has $12.60 USD
+
+The piggy bank has $15.75 CAD
+
+The piggy bank has $11.59 EUR
+
+The piggy bank has $190.51 MXN
+
+The piggy bank has $1501.79 JPY
+
+The piggy bank has $12.60 USD
+
+The Piggy Bank was broken!

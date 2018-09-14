@@ -1,0 +1,26 @@
+Update your shell program from Assignment 4 to support IO redirection.  
+You need to support redirecting input and output to files and pipes.
+
+ 
+
+The input to an executable can be from a file using this syntax:
+
+foo < infilename
+
+ 
+
+The output from a executable can be redirected to a file using this syntax:
+
+foo > outfilename
+
+ 
+
+The output from an executable can be redirected to the input of a second using this syntax:
+
+foo | bar
+
+ 
+
+These three operations can be chained to an arbitrary depth.  For example:
+
+A < infilename | B | C | D > outfilename

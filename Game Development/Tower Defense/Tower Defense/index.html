@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html lang = 'en-US'>
+    <head>
+        <meta charset = "UTF-8">
+        <title>Final Project</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+        <div id = "game">
+            <div id = "main-menu" class = "screen">
+                <h1>Final Project</h1>
+                <ul class = "menu">
+                    <li><button id = "id-new-game">New&nbsp;Game</button></li>                            
+                    <li><button id = "id-high-scores">High&nbsp;Scores</button></li>
+                    <li><button id = "id-help">Help</button></li>
+                    <li><button id = "id-about">About</button></li>
+                </ul>
+            </div>
+            <div id = "game-play" class = "screen">
+                    <div style="width: 100%; height: 100%">
+                        <div style="width: 200px; float: left;">
+                            <ul class = "menu">
+                                <li><button id = "id-send-wave">Send_Wave</button></li>
+                                Towers
+                                <table>
+                                    <tr>
+                                        <td><button id = "id-tower-one"><img width="10"   height="10" src="images/testtower1.png" alt=""></button></td>
+                                        <td><button id = "id-tower-two"><img width="10"   height="10" src="images/testtower2.png" alt=""></button></td>
+                                        <td><button id = "id-tower-three"><img width="10"   height="10" src="images/testtower3.png" alt=""></button></td>
+                                        <td><button id = "id-tower-four"><img width="10"   height="10" src="images/testtower4.png" alt=""></button></td>
+                                    </tr>
+                                </table>
+
+                                <li><button id = "id-upgrade">Upgrade_Tower</button></li>
+                                <li><button id = "id-sell-tower">Sell_Tower</button></li>
+                                <li><button id = "id-toggle-grid">Toggle_Grid</button></li>
+                                <li><button id = "id-set-hotkeys">Set_Hotkeys</button></li>
+
+                                <li><button id = "id-game-back">Exit</button></li>
+                            </ul>
+                            <div id = "id-tower-info">
+
+                            </div>
+                        </div>
+                        <div style="margin-left: 250px; height: 100%" >
+                                <canvas id="canvas-main" width="1000" height="1000" style="width: 100%; height: 100%;" 
+                                onmousemove="MyGame.InputHandler.reportMousePosition(event)"
+                                onmouseout="MyGame.InputHandler.setMouseOut()"
+                                onmousedown="MyGame.InputHandler.mouseDown(event)"></canvas>
+                        </div>
+                    </div>                
+            </div>
+            <div id = "high-scores" class = "screen">
+                <h1>High Scores</h1>
+                    <table style = "margin-left: auto; margin-right: auto">
+                        <tr>
+                            <td id="hs1n"></td>
+                            <td id="hs1s"></td>
+                        </tr>
+                        <tr>
+                            <td id="hs2n"></td>
+                            <td id="hs2s"></td>
+                        </tr>
+                        <tr>
+                            <td id="hs3n"></td>
+                            <td id="hs3s"></td>
+                        </tr>
+                        <tr>
+                            <td id="hs4n"></td>
+                            <td id="hs4s"></td>
+                        </tr>
+                        <tr>
+                            <td id="hs5n"></td>
+                            <td id="hs5s"></td>
+                        </tr>
+                    </table>
+                <ul class = "menu">
+                    <li><button id = "id-high-scores-back">Back</button></li>
+                </ul>
+            </div>
+            <div id = "help" class = "screen" style = "padding-left: 20px; word-wrap: break-word; width: 90%">
+                <h1>Help</h1>
+                    Hotkeys:
+                    <p>s is sell</p>
+                    <p>u is upgrade</p>
+                    <p>g is next wave</p>
+                    <p>1-4 are for towers</p>
+                <ul class = "menu">
+                    <li><button id = "id-help-back">Back</button></li>
+                </ul>
+            </div>
+            <div id = "about" class = "screen">
+                <h1>About</h1>
+                <p>Developed by: Xuecong Fan and Jacob Piland</p>
+                <p>Instructor: Dr. Dean Mathias</p>
+                <p>...</p>
+                <p>Star Drawing Function</p>
+                <p>m1erikson</p>
+                <p>http://jsfiddle.net/m1erickson/8j6kdf4o/</p>
+                <p>...</p>
+                <p>Music from Broforce the soundtrack</p>
+                <p>Shooting sound effect from somewhere</p>
+                
+                <ul class = "menu">
+                    <li><button id = "id-about-back">Back</button></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+
+    <img id= "tower1" width="0"   height="0" src="images/testtower1.png" alt="">
+    <img id= "tower2" width="0"   height="0" src="images/testtower2.png" alt="">
+    <img id= "tower3" width="0"   height="0" src="images/testtower3.png" alt="">
+    <img id= "tower4" width="0"   height="0" src="images/testtower4.png" alt="">
+    <img id= "franc"  width="0"   height="0" src="images/franc.png" alt="">
+
+    <audio id="menuAudio" src="music/vbs.mp3" preload="auto" loop="true"></audio>
+    <audio id="shootAudio" src="music/bow.mp3" preload="auto" ></audio>
+    
+
+    <script>
+        var MyGame = {
+            screens: {}
+        };
+    </script>
+    <script src = "sources/scripts/globals.js"></script>
+    <script src = "sources/scripts/bricksEngine.js"></script>
+    <script src = "sources/main.js"></script>
+    <script src = "sources/scripts/noiseEngine.js"></script>
+    <script src = "sources/scripts/randomEngine.js"></script>
+    <script src = "sources/scripts/animationEngine.js"></script>
+    
+    <script src = "sources/scripts/graphicsEngine.js"></script>
+    <script src = "sources/scripts/particleEngine.js"></script>
+    <script src = "sources/scripts/updateEngine.js"></script>
+    <script src = "sources/scripts/gameobjects.js"></script>
+    <script src = "sources/scripts/inputHandler.js"></script>
+    <script src = "sources/scripts/renderEngine.js"></script>
+
+    <script src = "sources/menus/highscores.js"></script>
+    <script src = "sources/menus/help.js"></script>
+    <script src = "sources/menus/about.js"></script>
+    <script src = "sources/menus/mainmenu.js"></script>
+    <script src = "sources/menus/gameplay.js"></script>
+    <script>MyGame.Main.initialize();</script>
+    
+</html>
